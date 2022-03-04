@@ -13,32 +13,32 @@ export class VisitorService {
   constructor(private http: HttpClient) { }
 
   //Methods to communicate with backend APIs
-    /* getVisitors(){
-        let url = environment.VISITOR.VISITOR_BASE_URL+environment.VISITOR.GET_ALL_VISITORS;
-        return this.httpClient.get(url);
-    } */
+  /* getVisitors(){
+      let url = environment.VISITOR.VISITOR_BASE_URL+environment.VISITOR.GET_ALL_VISITORS;
+      return this.httpClient.get(url);
+  } */
 
   // viewVisitor(id: any){
 
   // }
 
   // editCustomer(id: any, customerObj: any){
-    
+
   // }
 
   // deleteVisitor(id: any){
 
   // }
-  getVisitiorslist(){
+  getVisitiorslist() {
     return this.http.get<any>(this.apiURL + 'visitors/list').pipe(map((list: any) => {
       console.log('visitorsList', list);
-       return list;
+      return list;
     })
-  );
+    );
   }
 
-  addVisitors(formData:any){
-    return this.http.post<any>(this.apiURL + 'visitors/add', {formData}).pipe(map((addVisitor: any) =>{
+  addVisitors(data: any) {
+    return this.http.post<any>(this.apiURL + 'visitors/add', data).pipe(map((addVisitor: any) => {
       console.log('addedVisitor', addVisitor);
       return addVisitor;
     }
@@ -48,6 +48,6 @@ export class VisitorService {
 
   }
 
-  
+
 
 }
