@@ -1,0 +1,73 @@
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <div class="row mb-2 mb-xl-3">
+            <div class="col-auto d-none d-sm-block">
+                <h3><strong>Add Visitor</strong></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-xxl-12 d-flex">
+                <div class="w-100">
+                    <div class="card">
+                       <div class="card-body">
+                            <form [formGroup] = "addVisitorForm" (ngSubmit)="addVisitor()">
+                            <div class="row">
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Visitor's Name</label>
+                                <input type="text" class="form-control" id="v-name" formControlName="visitorName">
+                                <small *ngIf="addVisitorForm.get('visitorName').invalid && addVisitorForm.get('visitorName').touched" class="text-danger">Name is required</small>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Visitor's Father Name</label>
+                                <input type="text" class="form-control" id="v-fname" formControlName="fatherName">
+                                <small *ngIf="addVisitorForm.get('fatherName').invalid && addVisitorForm.get('fatherName').touched" class="text-danger">Father's name is required</small>
+                              </div>
+                            </div>
+                             </div>
+                            <div class="row"> 
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Visitor's Phone</label>
+                                <input type="number" class="form-control" id="v-phone" formControlName="phoneNumber">
+                                <small *ngIf="addVisitorForm.get('phoneNumber').invalid && addVisitorForm.get('phoneNumber').touched" class="text-danger">Phone number is required</small>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Visitor's Address</label>
+                                <input type="text" class="form-control" id="v-address" formControlName="address">
+                                <small *ngIf="addVisitorForm.get('address').invalid && addVisitorForm.get('address').touched" class="text-danger">Address is required</small>
+                              </div>
+                            </div>
+                             </div>
+                             <div class="row">
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Purpose of Visit</label>
+                                <input type="text" class="form-control" id="v-purpose" formControlName="purpose">
+                                <small *ngIf="addVisitorForm.get('purpose').invalid && addVisitorForm.get('purpose').touched" class="text-danger">Purpose is required</small>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label">Attended Person</label>
+                                <input type="text" class="form-control" id="v-attender" formControlName="attendedPerson">
+                                <small *ngIf="addVisitorForm.get('attendedPerson').invalid && addVisitorForm.get('attendedPerson').touched" class="text-danger">Name is required</small>
+                              </div>
+                            </div>
+                             </div>
+
+                             <button type="submit" class="btn btn-primary" [disabled]="addVisitorForm.invalid">Add Visitor</button>		
+                            
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
+</main>
