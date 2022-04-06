@@ -11,11 +11,15 @@
                 <div class="w-100">
                     <div class="card">
                       <div class="card-body">
-                        <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover"> -->
+                        
                           <table  class="row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                            <!-- <table  class="row-border hover" > -->
+                            
+                            
                             <thead>
                               <tr>
-                                <th>ID</th>
+                                <th>Sr No.</th>
+                                <th>Visit Date</th>
                                 <th> Visitor's Name </th>
                                 <th> Visitor's Father Name</th>
                                 <th> Visitor's Phone Number</th>
@@ -25,8 +29,10 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let visitor of visitorList">
-                                <td>{{visitor._id}}</td>
+                              <tr *ngFor="let visitor of visitorList; let i = index">
+                                <!-- <td>{{visitor._id}}</td>  -->
+                                <td>{{i+1}}</td>
+                                <td>{{visitor.createdAt|date:'d/M/yy h:mm a'}}</td>
                                 <td>{{visitor.visitorName}}</td>
                                 <td>{{visitor.visitorFatherName}}</td>
                                 <td>{{visitor.visitorPhone}}</td>

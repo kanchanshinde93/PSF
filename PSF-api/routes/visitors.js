@@ -18,25 +18,30 @@ const visitorModel = require('../models/visitors.model');
 
 router.post('/add', (async (req, res, next) => {
   let visitorObj = new visitorModel({
+    psId: req.body.psId,
+    psUserId : req.body.psUserId,
+    psName : req.body.psName,
     visitorName: req.body.visitorName,
     visitorFatherName: req.body.visitorFatherName,
     visitorPhone: req.body.visitorPhone,
     visitorAddress: req.body.visitorAddress,
     purpose: req.body.purpose,
     attenderName: req.body.attenderName,
+    status: req.body.status
+    
   });
   const createdVisitorsList = await visitorObj.save();
 
   if (createdVisitorsList) {
     var resp = {
       success: true,
-      message: 'VisitorsList created Successfully',
+      message: 'Visitor added Successfully',
       data: createdVisitorsList
     }
 
     res.send(resp);
   } else {
-    res.status(404).send({ success: false, message: 'VisitorsList  Not Created' });
+    res.status(404).send({ success: false, message: 'Cannot add New Visitor' });
   }
 })
 );
@@ -74,9 +79,9 @@ router.post('/add', (async (req, res, next) => {
 // });
 
 
-/* GET all visitors */
+/* GET all visitors visitorListResponse*/
 router.get('/list', function (req, res, next) {
-  data.find(function (err, visitorListResponse) {
+  visitorModel.find(function (err, visitorListResponse) {
 
     if (err) {
       res.send({ status: 500, message: 'Unable to find Visitor' });
@@ -125,6 +130,7 @@ router.put('/update', function (req, res, next) {
     attenderName: attenderName
   });
 
+ 
   visitorModel.findByIdAndUpdate(userId, visitorObj, function (err, visitorResponse) {
 
     if (err) {
@@ -136,6 +142,18 @@ router.put('/update', function (req, res, next) {
   });
 });
 
+router.put("/updatestatus",function (req, res, next) {
+  const id = req.body.id;
+  const status = req.body.status;
+  console.log(id)
+   visitorModel.findByIdAndUpdate( id, {status:status}, function(err, response){
+    if(err){
+      res.send(err);
+    }
+     else
+    res.send({status: 200, students : response});
+  });
+})
 
 
 /* Delete existing visitor */

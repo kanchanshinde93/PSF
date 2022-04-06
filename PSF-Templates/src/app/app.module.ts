@@ -6,11 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { FooterComponent } from './layout/footer/footer.component';
+//import { FooterComponent } from './layout/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import {DataTablesModule} from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    //FooterComponent
   ],
   imports: [
     BrowserModule,

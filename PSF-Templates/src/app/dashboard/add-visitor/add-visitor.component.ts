@@ -25,10 +25,11 @@ export class AddVisitorComponent implements OnInit {
     this.addVisitorForm = this.fb.group({
       visitorName: new FormControl('', [Validators.required]),
       fatherName: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(11)]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       address: new FormControl('', [Validators.required]),
       purpose: new FormControl('', [Validators.required]),
-      attendedPerson: new FormControl('', [Validators.required])
+      attendedPerson: new FormControl('', [Validators.required]),
+      
     });
   }
 
@@ -44,7 +45,8 @@ export class AddVisitorComponent implements OnInit {
         visitorPhone: this.addVisitorForm.value.phoneNumber,
         visitorAddress: this.addVisitorForm.value.address,
         purpose: this.addVisitorForm.value.purpose,
-        attenderName: this.addVisitorForm.value.attendedPerson
+        attenderName: this.addVisitorForm.value.attendedPerson,
+        status : 0
       }
 
       //console.log(this.addVisitorForm.value)
@@ -64,7 +66,6 @@ export class AddVisitorComponent implements OnInit {
       })
 
     }
-
 
   }
 

@@ -21,26 +21,28 @@ export class VisitorListComponent implements OnInit {
   // constructor(private httpClient: HttpClient) { }
   visitorResult: any;
   visitorList: any;
-  constructor(private visitorService: VisitorService) { }
+  constructor(private visitorService: VisitorService) { 
+   let userInfo =  localStorage.getItem('psUserInfo')
+   console.log(userInfo);
+   
+  }
  
   ngOnInit(): void {
     
     this.dtOptions ={
       pagingType: 'full_numbers',
-      pageLength: 2,
-      //lengthMenu: [5, 10, 15],
+      //pageLength: 10,
+      lengthMenu: [5, 10, 15],
       processing: true
     };
+    
     this.getVisitorList();
     // this.httpClient.get<Visitor[]>('data/data.json').subscribe(data => {
     //   this.visitors = (data as any).data;
     //   this.dtTrigger.next();
     // });
-  }
-
-
-  
-  getVisitorList(){
+  } 
+   getVisitorList(){
     this.visitorService.getVisitiorslist().subscribe((data: any) =>{
         this.visitorResult = data;
         this.visitorList = this.visitorResult.results;

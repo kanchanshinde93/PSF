@@ -13,13 +13,16 @@ router.post('/add', function(req, res, next){
   
   //let userEmail = req.body.userEmail;
    bcrypt.hash(req.body.userPassword,10,(err, hash)=>{
-    if(err){
+    if(err){     
        res.send({status: 500, message: 'error'})
     }
     else{
       let userLoginObj = new userLoginModel({
         userEmail : req.body.userEmail, 
-        userPassword : hash
+        userPassword : hash,
+        isAdmin: false,
+        isControlAdmin:true,
+       isVisitorAdmin: false
       });
 
       userLoginObj.save(function(err, userLoginObj){
@@ -57,7 +60,8 @@ router.post('/login', function(req, res, next){
             expiresIn: "24h"
           }
           );
-          res.send({status: 200, userEmail:userLoginObj[0].userEmail, token: token})
+          res.send({status: 200, userEmail:userLoginObj[0].userEmail, 
+            isVisitorAdmin: userLoginObj[0].isVisitorAdmin, isControlAdmin: userLoginObj[0].isControlAdmin, token: token, message: 'Login Successful'})
       }
     })
   })

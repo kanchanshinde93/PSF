@@ -7,5 +7,6 @@ export class Visitor {
     visitorAddress : string | undefined;
     purpose : string | undefined;
     attenderName : string | undefined;
+    status: string | undefined;
 
 }

@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const userLoginSchema = mongoose.Schema ({
 
     userEmail : String ,
-    userPassword : String
+    userPassword : String,
+    
+    isAdmin: {type: Boolean, default: false, required: true},
+    isVisitorAdmin: {type: Boolean, default: false, required: true},
+    isControlAdmin: {type: Boolean, default: false, required: true}
 
 });
 

@@ -31,7 +31,7 @@ export class VisitorService {
   // }
   getVisitiorslist() {
     return this.http.get<any>(this.apiURL + 'visitors/list').pipe(map((list: any) => {
-      console.log('visitorsList', list);
+      //console.log('visitorsList', list);
       return list;
     })
     );
