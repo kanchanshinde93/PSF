@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Subject } from 'rxjs';
 //import 'rxjs/add/operator/map';
-import { Visitor } from '@angular/compiler';
+import { identifierModuleUrl, Visitor } from '@angular/compiler';
 
 import { VisitorService } from '../../services/visitor.service';
+
 
 @Component({
   selector: 'app-visitor-list',
@@ -15,19 +16,23 @@ export class VisitorListComponent implements OnInit {
 
   dtOptions: DataTables.Settings ={};
   visitors: Visitor[] = [];
+  
 
   dtTrigger: Subject<any> = new Subject<any>();
 
   // constructor(private httpClient: HttpClient) { }
   visitorResult: any;
   visitorList: any;
+  userInfo: any;
   constructor(private visitorService: VisitorService) { 
-   let userInfo =  localStorage.getItem('psUserInfo')
-   console.log(userInfo);
+ 
+  this.userInfo =  localStorage.getItem('psUserInfo')
+   console.log(JSON.parse(this.userInfo[0].psId));
    
   }
  
   ngOnInit(): void {
+   
     
     this.dtOptions ={
       pagingType: 'full_numbers',
@@ -43,16 +48,29 @@ export class VisitorListComponent implements OnInit {
     // });
   } 
    getVisitorList(){
-    this.visitorService.getVisitiorslist().subscribe((data: any) =>{
-        this.visitorResult = data;
-        this.visitorList = this.visitorResult.results;
-        console.log(this.visitorList);
-        this.dtTrigger.next();
-    }); 
+    this.visitorService.getVListById(JSON.parse(this.userInfo.psId)).subscribe((data: any) =>{
+      this.visitorResult = data;
+      this.visitorList = this.visitorResult.results;
+      //console.log(this.visitorList);
+      this.dtTrigger.next();
+  }); 
+    // this.visitorService.getVisitiorslist().subscribe((data: any) =>{
+    //     this.visitorResult = data;
+    //     this.visitorList = this.visitorResult.results;
+    //     console.log(this.visitorList);
+    //     this.dtTrigger.next();
+    // }); 
   }
+
+//  getpsUserInfo(){
+   
+
+//    }
+ 
 
   // ngOnDestroy(): void{
   //   this.dtTrigger.unsubscribe();
   // }
 
 }
+

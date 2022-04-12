@@ -47,4 +47,24 @@ router.get('/list', function(req, res, next){
     })
 })
 
+router.get('/list/:id',async (req,res)=>{
+    // let data = policeStationModel.findById(req.params.id)
+    // //  res.send(data)
+    // console.log(data)
+     policeStationModel.findById(req.params.id,function(err, psListResponse){
+
+        if(err){
+            console.log(err)
+            res.send({ status: 500, message: 'Unable to Police Station' });
+        }
+
+        else{
+            console.log(psListResponse)
+            res.send({ status: 200, message: 'Success',data:psListResponse });
+            // const recordCount = psListResponse;
+            // res.send({status:200 , recordCount: recordCount, results : psListResponse})
+        }
+    })
+})
+
 module.exports = router;

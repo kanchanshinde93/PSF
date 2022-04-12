@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const policeStationSchema = mongoose.Schema({
-    _id: String,
     name: String,
     zone: String,
     pincode : Number,

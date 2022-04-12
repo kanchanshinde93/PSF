@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const psUserModel = require('../models/ps-user.model')
 
+
 /*  Add Police Station User*/
 router.post('/add', function(req, res, next){
     bcrypt.hash(req.body.password,10,(err, hash) => {
@@ -103,5 +104,7 @@ router.get('/list', function(req, res, next){
         }
     })
 })
+
+
 
 module.exports = router;

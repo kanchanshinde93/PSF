@@ -41,14 +41,18 @@ export class LoginComponent implements OnInit {
 
       this.auth.psLogin(email, password).subscribe(result => {
 
-        console.log(result.psUserInfo)
-        localStorage.setItem('psUserInfo', result.psUserInfo);        // console.log(result.isVisitorAdmin)
+       
+             // console.log(result.isVisitorAdmin)
         // console.log(result.isControlAdmin)
         if (result.status == 200) {
         
+        
           localStorage.setItem('token', result.token);
+         
+          let xyz = localStorage.setItem('psUserInfo', JSON.stringify(result.psUserInfo));   
+          console.log( xyz);
           this.toastr.success(result.message)
-          this.router.navigate(['./dashboard/visitorList']);
+         this.router.navigate(['./dashboard/visitorList']);
         } 
         else {
           console.log('err')
@@ -56,7 +60,7 @@ export class LoginComponent implements OnInit {
           //this.errorMessage1 = result['data'];
        
       })
-    } }
+    } 
 
   /*  get user(){
      return this.loginForm.get('email');
@@ -66,7 +70,9 @@ export class LoginComponent implements OnInit {
      return this.loginForm.get('password');
    } */
 
-  clickSub() {
+  // loginButton(psUserInfo: any) {
+  //   console.log(psUserInfo)
+
     //console.log(this.loginForm.value);
     // this.toastr.error('Email or Password is wrong!', 'Error!', {
     //   positionClass: 'toast-top-right'

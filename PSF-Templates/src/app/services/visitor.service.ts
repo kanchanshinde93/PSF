@@ -48,6 +48,14 @@ export class VisitorService {
 
   }
 
+  getVListById(id:any) {
+    return this.http.get<any>(this.apiURL + 'visitors/list/' +id).pipe(map((list: any) => {
+      //console.log('visitorsList', list);
+      return list;
+    })
+    );
+  }
+
 
 
 }

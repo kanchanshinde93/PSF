@@ -93,6 +93,24 @@ router.get('/list', function (req, res, next) {
   });
 });
 
+/* GET all visitors list by specific Police station id*/
+router.get('/list/:psId', async(req, res) =>{
+
+  const psId = req.params.psId
+  
+  visitorModel.findOne({"psId":psId}, function (err, visitorListResponse) {
+
+    if (err) {
+      res.send({ status: 500, message: 'Unable to find Visitor' });
+    }
+    else {
+      console.log(visitorListResponse)
+      //const recordCount = visitorListResponse.length;
+      res.send({ status: 200, results: visitorListResponse });
+    }
+  });
+});
+
 
 /* GET a specific visitors */
 router.get('/view', function (req, res, next) {

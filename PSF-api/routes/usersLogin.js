@@ -60,7 +60,7 @@ router.post('/login', function(req, res, next){
             expiresIn: "24h"
           }
           );
-          res.send({status: 200, userEmail:userLoginObj[0].userEmail, 
+          res.send({status: 200, userEmail:userLoginObj[0].userEmail, _id:userLoginObj[0]._id, 
             isVisitorAdmin: userLoginObj[0].isVisitorAdmin, isControlAdmin: userLoginObj[0].isControlAdmin, token: token, message: 'Login Successful'})
       }
     })
