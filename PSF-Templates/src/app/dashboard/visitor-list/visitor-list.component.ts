@@ -22,12 +22,14 @@ export class VisitorListComponent implements OnInit {
 
   // constructor(private httpClient: HttpClient) { }
   visitorResult: any;
-  visitorList: any;
+  visitorList: any[]=[];
   userInfo: any;
   constructor(private visitorService: VisitorService) { 
  
-  this.userInfo =  localStorage.getItem('psUserInfo')
-   console.log(JSON.parse(this.userInfo[0].psId));
+  
+
+  this.userInfo = JSON.parse(localStorage.getItem('psUserInfo')||'[]');
+  console.log(this.userInfo);
    
   }
  
@@ -48,10 +50,13 @@ export class VisitorListComponent implements OnInit {
     // });
   } 
    getVisitorList(){
-    this.visitorService.getVListById(JSON.parse(this.userInfo.psId)).subscribe((data: any) =>{
-      this.visitorResult = data;
-      this.visitorList = this.visitorResult.results;
-      //console.log(this.visitorList);
+     console.log(this.userInfo.psId);
+    this.visitorService.getVListById(this.userInfo.psId).subscribe((data: any) =>{
+      console.log(data);
+      this.visitorList = data.results;
+    //  this.visitorList.push(data.results)
+     /*  this.visitorList = this.visitorResult.results;  */
+     
       this.dtTrigger.next();
   }); 
     // this.visitorService.getVisitiorslist().subscribe((data: any) =>{

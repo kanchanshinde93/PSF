@@ -12,6 +12,7 @@ const visitorSchema = mongoose.Schema ({
     purpose : String,
     attenderName : String,
     status: Number
+  
 },
 
 {timestamps: true

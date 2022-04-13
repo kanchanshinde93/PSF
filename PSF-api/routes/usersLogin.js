@@ -22,7 +22,7 @@ router.post('/add', function(req, res, next){
         userPassword : hash,
         isAdmin: false,
         isControlAdmin:true,
-       isVisitorAdmin: false
+        isVisitorAdmin: false
       });
 
       userLoginObj.save(function(err, userLoginObj){

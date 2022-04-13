@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
-const validator = require("validator");
+const validator = require('validator');
 
 const psUserSchema = mongoose.Schema({
-    psId : String,
+    //psId : String,
+    name: String,
+    // zone: String,
+    // pincode : Number,
+    // city : String,
     
     email : {
         type :String, 
@@ -15,9 +19,9 @@ const psUserSchema = mongoose.Schema({
         }
     },
 
-    password :  {type: String, required: true},
-    psName: String,
-    createdBy : String
+    password :  {type: String, required: true}
+    //psName: String
+    //createdBy : String
 })
 
 

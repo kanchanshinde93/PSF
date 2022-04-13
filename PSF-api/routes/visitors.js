@@ -98,7 +98,7 @@ router.get('/list/:psId', async(req, res) =>{
 
   const psId = req.params.psId
   
-  visitorModel.findOne({"psId":psId}, function (err, visitorListResponse) {
+  visitorModel.find({"psId":psId}, function (err, visitorListResponse) {
 
     if (err) {
       res.send({ status: 500, message: 'Unable to find Visitor' });

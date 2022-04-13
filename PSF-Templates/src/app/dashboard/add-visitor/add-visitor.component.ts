@@ -15,11 +15,15 @@ import { environment } from 'src/environments/environment.dev';
 export class AddVisitorComponent implements OnInit {
   addVisitorForm: FormGroup | any;
   private apiURL = environment.apiUrl;
+  userInfo: any;
 
 
 
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService, public router: Router, private visitorService: VisitorService, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private toastr: ToastrService, public router: Router, private visitorService: VisitorService, private http: HttpClient) { 
+    this.userInfo = JSON.parse(localStorage.getItem('psUserInfo')||'[]');
+    console.log(this.userInfo);
+  }
 
   ngOnInit(): void {
     this.addVisitorForm = this.fb.group({
@@ -46,7 +50,11 @@ export class AddVisitorComponent implements OnInit {
         visitorAddress: this.addVisitorForm.value.address,
         purpose: this.addVisitorForm.value.purpose,
         attenderName: this.addVisitorForm.value.attendedPerson,
-        status : 0
+        status : 0,
+        psId:this.userInfo.psId,
+        psName:this.userInfo.psName,
+        psUserId:this.userInfo._id
+
       }
 
       //console.log(this.addVisitorForm.value)
@@ -55,6 +63,7 @@ export class AddVisitorComponent implements OnInit {
         if (data.success) {
           this.toastr.success(data.message);
           this.addVisitorForm.reset();
+          this.router.navigate(['dashboard/visitorList'])
 
         }
         else {

@@ -16,11 +16,15 @@ router.post('/add', function(req, res, next){
          }
          else{
             let psUserObj = new psUserModel({
-                psId: req.body.psId,
+                //psId: req.body.psId,
+                name : req.body.name,
+                // zone : req.body.zone,
+                // pincode : req.body.pincode,
+                // city : req.body.city,
                 email: req.body.email,
-                password : hash,
-                psName: req.body.psName,
-                createdBy : req.body.createdBy
+                password : hash
+                //psName: req.body.psName,
+                //createdBy : req.body.createdBy
             })
 
             psUserObj.save(function(err, psUserObj){

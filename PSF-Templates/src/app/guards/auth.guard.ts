@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -8,11 +9,12 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private toastr: ToastrService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.auth.isLoggedIn !== true) {
-      console.log('Access Denied, Login is Required to Access This Page!')
+      this.toastr.error('Access Denied, Login is Required!')
+      //console.log('Access Denied, Login is Required to Access This Page!')
       this.router.navigate(['/login'])
     }
     return true;

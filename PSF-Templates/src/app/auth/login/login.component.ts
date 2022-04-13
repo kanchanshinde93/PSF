@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
-
+  localStorage:Storage | undefined
 
   constructor(private fb: FormBuilder, public auth: AuthService, public router: Router, private toastr: ToastrService) { }
 
@@ -49,10 +49,13 @@ export class LoginComponent implements OnInit {
         
           localStorage.setItem('token', result.token);
          
-          let xyz = localStorage.setItem('psUserInfo', JSON.stringify(result.psUserInfo));   
-          console.log( xyz);
+          let xyz = localStorage.setItem('psUserInfo', JSON.stringify(result.psUserInfo[0]));   
+         
+          
+
+
           this.toastr.success(result.message)
-         this.router.navigate(['./dashboard/visitorList']);
+      this.router.navigate(['./dashboard/visitorList']);
         } 
         else {
           console.log('err')
