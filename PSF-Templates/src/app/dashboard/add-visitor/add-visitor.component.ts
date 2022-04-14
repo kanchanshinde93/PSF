@@ -51,12 +51,13 @@ export class AddVisitorComponent implements OnInit {
         purpose: this.addVisitorForm.value.purpose,
         attenderName: this.addVisitorForm.value.attendedPerson,
         status : 0,
-        psId:this.userInfo.psId,
-        psName:this.userInfo.psName,
-        psUserId:this.userInfo._id
+        psId:this.userInfo._id,
+        psName:this.userInfo.psName
+       
 
       }
-
+      console.log(data);
+      
       //console.log(this.addVisitorForm.value)
       this.visitorService.addVisitors(data).subscribe((data: any) => {
         console.log(data)

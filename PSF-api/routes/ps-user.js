@@ -17,7 +17,7 @@ router.post('/add', function(req, res, next){
          else{
             let psUserObj = new psUserModel({
                 //psId: req.body.psId,
-                name : req.body.name,
+                psName : req.body.psName,
                 // zone : req.body.zone,
                 // pincode : req.body.pincode,
                 // city : req.body.city,

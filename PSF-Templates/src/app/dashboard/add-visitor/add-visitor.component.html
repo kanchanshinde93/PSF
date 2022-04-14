@@ -32,7 +32,8 @@
                             <div class="col-sm-6">
                               <div class="mb-3">
                                 <label class="form-label">Visitor's Phone</label>
-                                <input type="number" class="form-control" id="v-phone" formControlName="phoneNumber">
+                                <input type="text" class="form-control" id="v-phone" formControlName="phoneNumber" maxlength="10" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                                >
                                 <small *ngIf="addVisitorForm.get('phoneNumber').invalid && addVisitorForm.get('phoneNumber').touched" class="text-danger">Phone number is required with maximum length 10 digits</small>   
                               </div>
                             </div>

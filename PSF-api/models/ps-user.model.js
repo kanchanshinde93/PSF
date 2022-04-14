@@ -3,7 +3,7 @@ const validator = require('validator');
 
 const psUserSchema = mongoose.Schema({
     //psId : String,
-    name: String,
+    psName: String,
     // zone: String,
     // pincode : Number,
     // city : String,

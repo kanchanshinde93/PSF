@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const visitorSchema = mongoose.Schema ({
 
     psId: String,
-    psUserId: String,
     psName: String,
     visitorName : String,
     visitorFatherName : String,

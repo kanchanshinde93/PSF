@@ -19,7 +19,6 @@ const visitorModel = require('../models/visitors.model');
 router.post('/add', (async (req, res, next) => {
   let visitorObj = new visitorModel({
     psId: req.body.psId,
-    psUserId : req.body.psUserId,
     psName : req.body.psName,
     visitorName: req.body.visitorName,
     visitorFatherName: req.body.visitorFatherName,

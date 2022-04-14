@@ -50,8 +50,8 @@ export class VisitorListComponent implements OnInit {
     // });
   } 
    getVisitorList(){
-     console.log(this.userInfo.psId);
-    this.visitorService.getVListById(this.userInfo.psId).subscribe((data: any) =>{
+     console.log(this.userInfo._id);
+    this.visitorService.getVListById(this.userInfo._id).subscribe((data: any) =>{
       console.log(data);
       this.visitorList = data.results;
     //  this.visitorList.push(data.results)
