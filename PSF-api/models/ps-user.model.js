@@ -3,7 +3,9 @@ const validator = require('validator');
 
 const psUserSchema = mongoose.Schema({
     //psId : String,
-    psName: String,
+    psName:{type:String,
+            required: true,
+            unique: [true, "This name already exist"]} ,
     // zone: String,
     // pincode : Number,
     // city : String,
