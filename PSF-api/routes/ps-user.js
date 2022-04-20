@@ -173,6 +173,19 @@ router.get('/list',function(req, res, next){
     })
 })
 
+/*  Edit Police Station Login Details*/
+router.patch('/update/:id',async function (req,res) {
+    let{password}=req.body
+    let encriptedPassword = crypto.AES.encrypt(JSON.stringify(password), 'secret key 123').toString();
+   
+   try{ const data = await psUserModel.findByIdAndUpdate(req.params.id,{psName:req.body.psName,email:req.body.email,password:encriptedPassword})
+    res.send({status: 200, details: data, message: 'Police Station updated successfully'})}
+    catch(err){
+        console.log(err)
+        res.send({status: 500, message: 'Could not update Police Station'})
+    }
+})
+
 
 
 module.exports = router;

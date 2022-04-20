@@ -32,7 +32,7 @@ export class AddVisitorComponent implements OnInit {
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       address: new FormControl('', [Validators.required]),
       purpose: new FormControl('', [Validators.required]),
-      attendedPerson: new FormControl('', [Validators.required]),
+      attendedPerson: new FormControl('', [Validators.required])
       
     });
   }

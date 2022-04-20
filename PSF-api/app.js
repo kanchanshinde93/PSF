@@ -9,14 +9,22 @@ var cors = require("cors");
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb://localhost/PSF');
+db = mongoose.connect(
+  "mongodb+srv://nikit:nikit@cluster0.053sm.mongodb.net/UserHyperLocal?retryWrites=true&w=majority",
+  (err) => {
+    console.log("Database connected");
+    if (err) {
+      console.log(err);
+    }
+  }
+);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitorsRouter = require('./routes/visitors');
 var usersLoginRouter = require('./routes/usersLogin');
 var feedbackRouter = require('./routes/feedback')
-var policeStationRouter = require('./routes/police-station')
+//var policeStationRouter = require('./routes/police-station')
 var psUserRouter = require('./routes/ps-user')
 
 var app = express();
@@ -39,7 +47,7 @@ app.use('/users', usersRouter);
 app.use('/visitors', visitorsRouter);
 app.use('/usersLogin', usersLoginRouter);
 app.use('/feedback', feedbackRouter);
-app.use('/police-station', policeStationRouter);
+//app.use('/police-station', policeStationRouter);
 app.use('/ps-user', psUserRouter);
 
 // catch 404 and forward to error handler

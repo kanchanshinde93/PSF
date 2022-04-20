@@ -52,9 +52,7 @@ export class LoginComponent implements OnInit {
           let xyz = localStorage.setItem('psUserInfo', JSON.stringify(result.psUserInfo[0]));   
          
           
-
-
-          this.toastr.success(result.message)
+      this.toastr.success(result.message)
       this.router.navigate(['./dashboard/visitorList']);
         } 
         else {

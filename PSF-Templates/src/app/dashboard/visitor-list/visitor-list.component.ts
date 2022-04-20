@@ -69,10 +69,7 @@ export class VisitorListComponent implements OnInit {
 
 //  getpsUserInfo(){
    
-
 //    }
- 
-
   // ngOnDestroy(): void{
   //   this.dtTrigger.unsubscribe();
   // }

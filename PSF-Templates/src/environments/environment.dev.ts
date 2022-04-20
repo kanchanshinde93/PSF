@@ -15,6 +15,6 @@ export const environment = {
         } */
 
         
-  apiUrl: 'http://localhost:8000/'
+  apiUrl: 'https://psf-api-zrojl.ondigitalocean.app/'
   };
   
